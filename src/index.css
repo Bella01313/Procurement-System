@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.login{
+  @apply bg-white border-4 border-green-400 rounded-lg h-[35rem] w-[30rem] flex flex-col text-left gap-2 py-[5rem] px-[5rem]
+}
+.loginn{
+  @apply bg-white border-4 border-green-400 rounded-lg h-[45rem] w-[30rem] flex flex-col text-left gap-1.5 py-[5rem] px-[5rem]
+}
+.login-btn{
+  @apply bg-green-400 text-white font-bold font-mono p-2 rounded-lg hover:opacity-75
+}
+
+.heading{
+  @apply text-2xl font-bold text-green-400  text-center py-[3.5rem] px-8 -mb-8
+}
+.input{
+  @apply font-bold font-mono p-2 rounded-lg border-2
+}
+label{
+  @apply font-bold font-black
+}
+
+.tab{
+  @apply py-[5rem] px-[30rem] 
+}
+.tab1{
+  @apply py-[5rem] px-[30rem] 
+}
+.logo{
+  @apply -my-[5rem] h-[13rem] {
+    
+  }
+}
