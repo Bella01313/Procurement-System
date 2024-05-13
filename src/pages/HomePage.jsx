@@ -1,13 +1,16 @@
 
 import kice from '../assets/img/home image.jpg';
 import SideBar from '../pages/SideBar';
+import Footer from '../pages/Footer';
+import About from '../pages/About';
+import Service from '../pages/Service';
 const HomePage = () => {
   return (
     <>
     <SideBar/>
-    <div className="flex flex-row bg-gradient-to-b from-white via-gray-100 to-blue-100 fixed w-full h-full gap-[5rem]">
+    <div className="flex mt-[2rem] flex-row bg-gradient-to-b from-white via-gray-100 to-blue-100 w-full h-full gap-[5rem]">
    
-      <div className="pl-[10rem] w-[50%] py-[6rem]">
+      <div className="pl-[10rem] w-[50%] py-[10rem]">
         <p className="text-5xl font-bold ">"Procurement Perfected</p>
         <span className="text-5xl font-bold px-[4rem] text-green-400">Savings Secured."</span>
 
@@ -22,10 +25,14 @@ const HomePage = () => {
          <a href="/signUp"><button className="bg-green-300 hover:bg-green-500 text-white rounded-full w-[8rem] p-3">Sign up</button></a> 
         </div>
       </div>
-      <div className='flex flex-col border- border-gray-400 rounded-lg shadow-lg w-[40%] h-[59vh] p-[2rem] gap-[1rem] animate-pulse transition duration-500 ease-in-out my-[4rem]'>
+      <div className='flex flex-col border- border-gray-400 rounded-lg shadow-lg w-[40%] h-[59vh] p-[2rem] gap-[1rem] animate-pulse transition duration-500 ease-in-out my-[9rem]'>
         <img src={kice} alt="" className=' object-cover no-repeat h-[59vh] ' />
       </div>
     </div>
+    <div> <About/></div>
+    <div><Service/></div>
+    <div><Footer/></div>
+   
     </>
   );
 };

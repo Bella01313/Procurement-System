@@ -1,13 +1,14 @@
 import {Link} from 'react-router-dom'
 import Logo from '../assets/img/my project logo.jpg'
+import SideBar from './SideBar';
 
 
 
 const Login = () => {
   return (
-    
+    <>
+    <SideBar/>
     <div className="tab1">
-      
       <div className='login'>
     <img src={Logo} alt="logo" className='logo' />
         <h1 className='heading'>LOGIN HERE!</h1>
@@ -20,7 +21,7 @@ const Login = () => {
         <h3>No account? <Link to="/signUp"><span className="text-red-600">Sign Up</span></Link></h3>
       </div>
     </div>
-   
+    </>
   );
 };
 
