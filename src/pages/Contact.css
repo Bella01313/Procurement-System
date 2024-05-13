@@ -1,0 +1,45 @@
+.input-container {
+    margin-bottom: 20px;
+  }
+  
+  .horizontal-line {
+    border: none;
+    height: 1px;
+    background-color: white;
+    margin-top: 5px;
+  }
+  
+  .input-container label {
+    display: block;
+  }
+  
+  .input-container input,
+  .input-container textarea {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+  }
+  
+  .input-container textarea {
+    resize: none;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+
+  
+  .heading {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+    
