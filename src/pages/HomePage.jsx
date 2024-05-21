@@ -1,13 +1,11 @@
 
 import kice from '../assets/img/home image.jpg';
-import SideBar from '../pages/SideBar';
-import Footer from '../pages/Footer';
 import About from '../pages/About';
 import Service from '../pages/Service';
+import Testimonials from './Testimonials';
 const HomePage = () => {
   return (
     <>
-    <SideBar/>
     <div className="flex mt-[2rem] flex-row bg-gradient-to-b from-white via-gray-100 to-blue-100 w-full h-full gap-[5rem]">
    
       <div className="pl-[10rem] w-[50%] py-[10rem]">
@@ -31,7 +29,7 @@ const HomePage = () => {
     </div>
     <div> <About/></div>
     <div><Service/></div>
-    <div><Footer/></div>
+    <div><Testimonials/></div>
    
     </>
   );

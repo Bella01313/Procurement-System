@@ -1,32 +1,160 @@
-
-import {Link} from 'react-router-dom'
-import Logo from '../assets/img/my project logo.jpg'
-import SideBar from './SideBar'
+import { useState } from "react";
+import {Link} from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { ThreeDots } from "react-loader-spinner";
+import Logo from "../assets/img/my project logo.jpg";
 
 const SignUp = () => {
+  const [fullName, setFullName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      const response = await axios.post(
+        "https://procurement-backend-red.onrender.com/auth/signup",
+        {
+          email,
+          name: `${fullName}`,
+          password,
+          confirmPassword:password
+          
+        }
+      );
+
+      toast.success(response.data.message);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("token", response.data.access_token);
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
+      // Clear form fields after submission
+      setEmail("");
+      setFullName("");
+      setPassword("");
+      setConfirmPassword("");
+    }
+  };
+
   return (
-    <>
-    <SideBar/>
-    <div className="tab1">
-    <div className='loginn'>
-  <img src={Logo} alt="logo" className='logo' />
-      <h1 className='heading'>  Create account here!</h1>
-
-
-      <label htmlFor="fullName">Full Name:</label>
-      <input className='input' type="text" placeholder='Enter your full name' required />
-      <label htmlFor="email">Email:</label>
-      <input className='input' type="text" placeholder='Enter your email address' required />
-      <label htmlFor="password">Password:</label>
-      <input className='input' type="password" placeholder='Enter your password' required />
-      <label htmlFor="password"> confrim Password:</label>
-      <input className='input' type="password" placeholder='Enter your password again' required />
-     <a href="/login" className=' bg-green-400 text-center text-white font-bold font-mono p-2 rounded-lg hover:opacity-75'> <button type="submit">Sign up</button></a>
-      <h3>Already have account! <Link to="/login"><span className="text-red-600">Login</span></Link></h3>
+    <div className="container mx-auto">
+      <ToastContainer />
+      <div className="flex  border-4 w-[30rem] px-[4rem] justify-center mt-[7rem] rounded-xl border-green-600 items-center">
+        <form className="w-full max-w-md" onSubmit={handleSubmit}>
+          <img src={Logo} alt="" className="px-4" />
+          <h2 className="text-xl text-green-600  mt-12 mb-4 font-bold">Create account here!</h2>
+          <p>
+            Already have an account?{" "}
+            <Link to="/login">
+            <span className="text-secondary underline text-red-500">Login</span>
+            </Link>
+          </p>
+          <div className="mb-4 font-bold">
+            <label htmlFor="firstName" className="block font-semibold mb-2">
+              Full Name
+            </label>
+            <input
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              type="text"
+              id="fullName"
+              className="input"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+          <div className="mb-4 font-bold">
+            <label htmlFor="email" className="block font-semibold mb-2">
+              Email
+            </label>
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              id="email"
+              className="input"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div className="mb-4 font-bold">
+            <label htmlFor="password" className="block font-semibold mb-2">
+              Password
+            </label>
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              id="password"
+              className="input"
+              placeholder="Enter password"
+              minLength="6"
+              required
+            />
+          </div>
+          <div className="mb-4 font-bold">
+            <label
+              htmlFor="confirmPassword"
+              className="block font-semibold mb-2"
+            >
+              Confirm Password
+            </label>
+            <input
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              type="password"
+              id="confirmPassword"
+              className="input"
+              placeholder="Confirm password"
+              minLength="6"
+              required
+            />
+          </div>
+          <div className="mb-6">
+            <label className="inline-flex items-center">
+              <input type="checkbox" className="form-checkbox" />
+              <span className="ml-2">Remember me</span>
+            </label>
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-green-600  py-3 rounded-lg text-xl font-bold hover:bg-green-700 hover:text-white"
+          >
+            {isLoading ? (
+              <ThreeDots
+                height="30"
+                width="30"
+                radius="4"
+                color="white"
+                ariaLabel="three-dots-loading"
+              />
+            ) : (
+              "Sign up"
+            )}
+          </button>
+        </form>
+      </div>
     </div>
-  </div>
-  </>
-  )
-}
+  );
+};
 
-export default SignUp
+export default SignUp;

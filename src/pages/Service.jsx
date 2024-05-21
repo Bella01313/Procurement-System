@@ -1,11 +1,10 @@
 
-import SideBar from './SideBar'
 import Logo from '../assets/img/service photo2.jpg' 
 
 const Service = () => {
   return (
   <>
-  <SideBar/>
+  
   <div className='flex flex-col bg-gradient-to-b from-white via-gray-100 to-blue-100 w-full h-full'>
 <h1 className='heading'>WHAT ACTUALLY DOES</h1>
 <div className='service'>

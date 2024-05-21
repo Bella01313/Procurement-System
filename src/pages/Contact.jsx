@@ -1,15 +1,14 @@
-import React from 'react';
+
 import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import SideBar from './SideBar';
-import "./Contact.css"; // Import CSS file for styling
+import "./Contact.css"; 
 
 const Contact = () => {
   return (
     <>
-      <SideBar />
-      <div className="contact">
-        <h1 className="heading">CONTACT US</h1>
+  
+      <h1 className="heading">CONTACT 📞 US</h1>
+      <div className="container">
           <div className="flex flex-row ">
             <div className=" text-xl contact-section p-5">
               <p className=" font-bold text-2xl py-3">Just Say hi!</p>

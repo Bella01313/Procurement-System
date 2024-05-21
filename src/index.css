@@ -9,6 +9,7 @@
 .loginn{
   @apply bg-white border-4 border-green-400 rounded-lg h-[40rem] w-[30rem] flex flex-col text-left gap-1.5 py-[5rem] px-[5rem]
 }
+
 .login-btn{
   @apply bg-green-400 text-white font-bold font-mono p-2 rounded-lg hover:opacity-75
 }
