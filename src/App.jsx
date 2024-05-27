@@ -29,13 +29,16 @@ import HodTenders from './hodDashboard/HodTenders.jsx';
 import HodApplication from './hodDashboard/HodApplication.jsx';
 import TenderDash from './dashboardPages/TenderDash.jsx';
 import AddTender from './tenders/AddTender.jsx';
+import HodRequisitionList from './hodDashboard/hodRequisitionList.jsx';
+import UpdateRequisition from './hodDashboard/UpdateRequisition.jsx';
+
 
 function App() {
   return (
     <>
       <Router>
         <Routes>
-          <Route  element={<Layout />}>
+          <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<About />} />
             <Route path="/service" element={<Service />} />
@@ -66,6 +69,9 @@ function App() {
           <Route path="/hodApplicantList" element={<HodApplication/>}/>
           <Route path="/addTenders" element={<AddTender/>}/>
           <Route path="/tenderDash" element={<TenderDash/>}/>
+          <Route path="/hodRequisitionList" element={<HodRequisitionList/>}/>
+          <Route path="/updateRequisition" element={<UpdateRequisition/>}/>
+        
         </Routes>
       </Router>
     </>

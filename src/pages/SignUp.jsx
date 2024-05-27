@@ -56,9 +56,10 @@ const SignUp = () => {
   };
 
   return (
+    <div className="font-jost">
     <div className="container mx-auto">
       <ToastContainer />
-      <div className="flex  border-4 w-[30rem] px-[4rem] justify-center mt-[7rem] rounded-xl border-green-600 items-center">
+      <div className="flex  border-4 w-[30rem] px-[4rem] justify-center mt-[8rem] rounded-xl border-green-600 items-center">
         <form className="w-full max-w-md" onSubmit={handleSubmit}>
           <img src={Logo} alt="" className="px-4" />
           <h2 className="text-xl text-green-600  mt-12 mb-4 font-bold">Create account here!</h2>
@@ -77,7 +78,7 @@ const SignUp = () => {
               onChange={(e) => setFullName(e.target.value)}
               type="text"
               id="fullName"
-              className="input"
+              className="border-2 rounded-lg p-2"
               placeholder="Enter your full name"
               required
             />
@@ -91,7 +92,7 @@ const SignUp = () => {
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               id="email"
-              className="input"
+              className="border-2 rounded-lg p-2"
               placeholder="Enter your email"
               required
             />
@@ -105,7 +106,7 @@ const SignUp = () => {
               onChange={(e) => setPassword(e.target.value)}
               type="password"
               id="password"
-              className="input"
+              className="border-2 rounded-lg p-2"
               placeholder="Enter password"
               minLength="6"
               required
@@ -123,7 +124,7 @@ const SignUp = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               type="password"
               id="confirmPassword"
-              className="input"
+              className="border-2 rounded-lg p-2"
               placeholder="Confirm password"
               minLength="6"
               required
@@ -137,7 +138,7 @@ const SignUp = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-green-600  py-3 rounded-lg text-xl font-bold hover:bg-green-700 hover:text-white"
+            className="w-full bg-green-600  py-3 rounded-lg text-xl mb-3 font-bold hover:bg-green-700 hover:text-white"
           >
             {isLoading ? (
               <ThreeDots
@@ -153,6 +154,7 @@ const SignUp = () => {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };

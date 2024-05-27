@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Logo from '../assets/img/my project logo.jpg'; // Ensure this path is correct

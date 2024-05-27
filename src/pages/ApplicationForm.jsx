@@ -1,84 +1,62 @@
+
 import { useState } from 'react';
-import { TiTick } from "react-icons/ti";
+// import { TiTick } from "react-icons/ti";
 import { IoMdClose } from "react-icons/io";
-import { useNavigate } from 'react-router-dom';
-import Logo from '../assets/img/my project logo.jpg'; // Fixed file name
+// import { useNavigate } from 'react-router-dom';
+import Logo from '../assets/img/my project logo.jpg'; 
+import { ThreeDots } from 'react-loader-spinner';
+//import { IoMdClose } from "react-icons/io";
 import axios from 'axios';
 
 const ApplicationForm = () => {
-    const [formData, setFormData] = useState({
-        fullName: '',
-        email: '',
-        campanyName: '',
-        campanyaddress: '',
-        contactNumber: '',
-        whyHire: '' // Added missing description in state
-    });
+    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState('');
+    const [companyName, setCompanyName] = useState('');
+    const [companyAddress, setCompanyAddress] = useState('');
+    const [contactNumber, setContactNumber] = useState('');
+    const [cv, setCv] = useState('');
+    const [whyHire, setWhyHire] = useState("");
+    const [isLoading, setIsLoading] = useState(false); // Loading state
 
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
-    const navigate = useNavigate();
-
-    const handleChange = (e) => {
-        const { name, value, files } = e.target;
-        setFormData({
-            ...formData,
-            [name]: files ? files[0] : value,
-        });
-    };
-
-    const handleSubmitForm = async(e)=>{
+    const handleSubmit= async (e) => {
         e.preventDefault();
-        await axios({
-            method: 'post',
-            url: 'https://procurement-backend-red.onrender.com/form',
-            
-            data: formData,
+        setIsLoading(true);
     
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-            
-        })
-
-        .then((response)=>{
+        console.log("CV file:", cv); // Log the cv state variable
+    
+        const form = {
+            fullName: fullName,
+            email: email,
+            companyName: companyName,
+            companyAddress: companyAddress,
+            contactNumber: contactNumber,
+            cv: cv, // Ensure this is correctly set
+            whyHire: whyHire,
+        };
+    
+        console.log("Form data:", form); // Log the form data object
+    
+        try {
+            const response = await axios.post(`https://procurement-backend-red.onrender.com/form`, form,{
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
             
             console.log(response);
-            setShowSuccessMessage(true);
-            setErrorMessage('');
-            navigate('/');
-        }).catch((Error)=>{
-            console.log(Error);
-            setShowSuccessMessage(false);
-        })
-    }
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const data = new FormData();
-    //     for (const key in formData) {
-    //         data.append(key, formData[key]);
-    //     }
-
-    //     try {
-    //         const response = await fetch('https://procurement-backend-red.onrender.com/form', {
-    //             method: 'POST',
-    //             body: data,
-    //         });
-
-    //         if (response.ok) {
-    //             setShowSuccessMessage(true);
-    //             setErrorMessage('');
-    //         } else {
-    //             setErrorMessage('Failed to submit the form. Please try again.');
-    //         }
-    //     } catch (error) {
-    //         setErrorMessage('An error occurred. Please try again later.');
-    //     }
-    // };
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+    
 
     const handleClose = () => {
-        navigate('/tenders');
+        // Implement closing logic here
     };
+
+    // Render your form and other UI elements here
 
     return (
         <>
@@ -90,45 +68,57 @@ const ApplicationForm = () => {
                     <img src={Logo} alt="Logo" className='px-[5rem]' />
                 </div>
                 <h2 className="text-2xl font-bold mb-4 px-[4rem]">Supplier Application Form</h2>
-                {errorMessage && (
-                    <p className="text-red-500 mb-4 px-[4rem]">{errorMessage}</p>
-                )}
+             
                 <p className='px-[4rem]'>Please fill out the form below</p>
-                <form onSubmit={handleSubmitForm} className="mt-4">
+                <form className="mt-4" onSubmit={handleSubmit}>
                     <div className="mb-4 px-[1rem]">
                         <label htmlFor="fullName" className="block">Full Names</label>
-                        <input type="text" id="fullName" name="fullName" value={formData.fullName} onChange={handleChange} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required />
+                        <input type="text" id="fullName" name="fullName" value={fullName} onChange={(E)=>setFullName(E.target.value)} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required />
                     </div>
                     <div className="mb-4 px-[1rem]">
                         <label htmlFor="email" className="block">Email</label>
-                        <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required />
+                        <input type="email" id="email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required />
                     </div>
                     <div className="mb-4 px-[1rem]">
                         <label htmlFor="campanyName" className="block">Company Name</label>
-                        <input type="text" id="campanyName" name="campanyName" value={formData.campanyName} onChange={handleChange} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required />
+                        <input type="text" id="campanyName" name="campanyName" value={companyName} onChange={(e)=>setCompanyName(e.target.value)} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required />
                     </div>
                     <div className="mb-4 px-[1rem]">
                         <label htmlFor="campanyaddress" className="block">Company Address</label>
-                        <input type="text" id="campanyaddress" name="campanyaddress" value={formData.campanyaddress} onChange={handleChange} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required />
+                        <input type="text" id="campanyaddress" name="campanyaddress" value={companyAddress} onChange={(e)=>setCompanyAddress(e.target.value)} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required />
                     </div>
                     <div className="mb-4 px-[1rem]">
                         <label htmlFor="contactNumber" className="block">Contact Number</label>
-                        <input type="text" id="contactNumber" name="contactNumber" value={formData.contactNumber} onChange={handleChange} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required />
+                        <input type="text" id="contactNumber" name="contactNumber" value={contactNumber} onChange={(e)=>setContactNumber(e.target.value)} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required />
                     </div>
                     <div className="mb-4 px-[1rem]">
                         <label htmlFor="receipt" className="block">Upload CV</label>
-                        <input type="file" id="receipt" name="receipt" onChange={handleChange} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required />
+                        <input type="file" id="receipt" name="cv"  onChange={(e) => setCv(e.target.files[0])} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required />
                     </div>
                     <div className="mb-4 px-[1rem]">
                         <label htmlFor="whyHire" className="block">Why hire you</label>
-                        <textarea id="whyHire" name="whyHire" value={formData.whyHire} onChange={handleChange} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
+                        <textarea id="whyHire" placeholder='begin with the title for tender,your description follow' name="whyHire" value={whyHire} onChange={(e)=>setWhyHire(e.target.value)} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
                     </div>
-                    <button type="submit" className="bg-green-600 hover:opacity-75 text-white ml-4 mb-2 py-2 rounded-md w-[25rem] focus:outline-none focus:bg-blue-600">Submit</button>
+                    <button
+            type="submit"
+            className="w-full bg-green-600  py-3 rounded-lg text-xl mb-3 font-bold hover:bg-green-700 hover:text-white"
+          >
+            {isLoading ? (
+              <ThreeDots
+                height="30"
+                width="30"
+                radius="4"
+                color="white"
+                ariaLabel="three-dots-loading"
+              />
+            ) : (
+              "submit"
+            )}
+        
+          </button>
                 </form>
             </div>
-            {showSuccessMessage && (
-                <p className="text-xl text-mono ml-[63rem] text-blue-600">Form received successfully, you will receive a message on your phone shortly <TiTick className="bg-gray-200 rounded-full text-4xl mt-[3rem] ml-[2rem] w-[10rem] h-[10rem]" /></p>
-            )}
+       
         </>
     );
 };

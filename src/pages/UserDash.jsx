@@ -1,13 +1,16 @@
 import  { useState, useEffect } from "react";
-import { BsPencilFill, BsTrashFill } from "react-icons/bs";
+import {  BsTrashFill } from "react-icons/bs"
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-import { Circles } from "react-loader-spinner";
+import { Puff } from "react-loader-spinner";
 import { LuUsers } from "react-icons/lu";
 import { MdManageHistory } from "react-icons/md";
 import Logo from '../assets/img/my project logo.jpg';
 import { HiOutlineDocumentReport } from "react-icons/hi";
+import { IoMdLogOut } from "react-icons/io";
+import { GrCompliance } from "react-icons/gr";
+import { FcProcess } from "react-icons/fc";
 import "react-toastify/dist/ReactToastify.css";
 
 const UserDash = () => {
@@ -42,10 +45,7 @@ const UserDash = () => {
     }
   };
 
-  const handleEdit = (id) => {
-    // Add your edit logic here
-    console.log("Edit user with id:", id);
-  };
+
 
   const handlePageChange = ({ selected }) => {
     setUserPageNumber(selected);
@@ -60,9 +60,7 @@ const UserDash = () => {
       <td className="md:px-[0.5rem] text-center md:py-[1.5rem]">{user.role}</td>
       <td className="md:px-[0rem] text-center">
         <span className="flex space-x-4 md:pl-8">
-          <button onClick={() => handleEdit(user._id)}>
-            <BsPencilFill />
-          </button>
+     
           <button onClick={() => handleDelete(user._id)}>
             <BsTrashFill className="text-red-500" />
           </button>
@@ -74,83 +72,85 @@ const UserDash = () => {
   return (
     <>
       <div className="flex">
-        <aside className="bg-green-600 w-1/5 h-[40rem] absolute">
-          <div className="flex flex-col">
-            <img src={Logo} alt="Logo" className="w-[10rem] bg-transparent ml-8 rounded-full mt-[1rem]" />
-            <nav>
-              <ul className="mt-[2rem] text-xl">
-                <Link to="/dashboard">
-                  <li className="mb-4">
-                    <a href="#" className="text-white hover:text-green-300 flex gap-2 ml-8">
-                      <b><HiOutlineDocumentReport className="mt-[0.3rem]" /></b>
-                      Dashboard
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/UserDash">
-                  <li className="mb-4">
-                    <a href="#" className="text-white hover:text-green-300 flex gap-2 ml-8">
-                      <b><LuUsers className="mt-[0.3rem]" /></b>
-                      Users
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/approvedTasks">
-                  <li className="mb-4">
-                    <a href="#" className="text-white hover:text-green-300 flex gap-2 ml-8">
-                      <b><LuUsers className="mt-[0.3rem]" /></b>
-                      Approved tasks
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/pendingTasks">
-                  <li className="mb-4">
-                    <a href="#" className="text-white hover:text-green-300 flex gap-2 ml-8">
-                      <b><LuUsers className="mt-[0.3rem]" /></b>
-                      Pending tasks
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/AccountDash">
-                  <li className="mb-4">
-                    <a href="#" className="text-white hover:text-green-300 flex gap-2 ml-8">
-                      <b><LuUsers className="mt-[0.3rem]" /></b>
-                      Profile
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/AnalyticsDash">
-                  <li className="mb-4">
-                    <a href="#" className="text-white hover:text-green-300 flex gap-2 ml-8">
-                      <b><MdManageHistory className="mt-[0.3rem]" /></b>
-                      Analytics
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/AdminDash">
-                  <li className="mb-4">
-                    <a href="#" className="text-white hover:text-green-300 flex gap-2 ml-8">
-                      <b><MdManageHistory className="mt-[0.3rem]" /></b>
-                      Administrator
-                    </a>
-                  </li>
-                </Link>
-              </ul>
-            </nav>
-          </div>
-          <p className="py-[8rem] w-[10rem] ml-[3rem]">
-            <div className="rounded-lg bg-white text-center p-2">
-              <a href="./login" className="text-black">Logout</a>
-            </div>
-          </p>
-        </aside>
-        <main className="flex-1 bg-slate-300 ml-[21rem] p-10 w-1/2">
+      <aside className="bg-green-600 w-1/5 h-[44rem] absolute">
+                <div className="flex flex-col ">
+                    <img src={Logo} alt="" className="w-[10rem] bg-transparent ml-8 rounded-full mt-[1rem]" />
+
+                    {/* Sidebar Navigation */}
+                    <nav>
+                        <ul className="mt-[2rem] text-xl">
+                            <Link to="/dashboard">
+                                <li className="mb-4 hover:bg-white rounded-lg p-2">
+                                    <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
+                                        <b><HiOutlineDocumentReport className="mt-[0.3rem]" /></b>Dashboard
+                                    </a>
+                                </li>
+                            </Link>
+                            <Link to="/UserDash">
+                                <li className="mb-4 hover:bg-white rounded-lg p-2">
+                                    <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
+                                        <b><LuUsers className="mt-[0.3rem]" /></b> Users
+                                    </a>
+                                </li>
+                            </Link>
+                            <Link to="/approvedTasks">
+                                <li className="mb-4 hover:bg-white rounded-lg p-2">
+                                    <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
+                                        <b><GrCompliance className="mt-[0.3rem]" /></b> Approved tasks
+                                    </a>
+                                </li>
+                            </Link>
+                            <Link to="/pendingTasks">
+                                <li className="mb-4 hover:bg-white rounded-lg p-2">
+                                    <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
+                                        <b><FcProcess className="mt-[0.3rem]" /></b> Pending tasks
+                                    </a>
+                                </li>
+                            </Link>
+                            <Link to="/hodRequisitionList">
+                                <li className="mb-4 hover:bg-white rounded-lg p-2">
+                                    <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
+                                        <b><MdManageHistory className="mt-[0.3rem]" /></b>Requisition List
+                                    </a>
+                                </li>
+                            </Link>
+                            <Link to="/tenderDash">
+                                <li className="mb-4 hover:bg-white rounded-lg p-2">
+                                    <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
+                                        <b><MdManageHistory className="mt-[0.3rem]" /></b>Tenders
+                                    </a>
+                                </li>
+                            </Link>
+                        </ul>
+                    </nav>
+                </div>
+                <p className="py-[8rem] w-[10rem] ml-[3rem]">
+                    <div className="rounded-lg bg-white text-center">
+                        <Link to="/login">
+                            <p className="mb-4 hover:bg-green-600 hover:text-white border-2 rounded-lg p-2">
+                                <a href="#" className="flex gap-2 ml-8">
+                                    <b><IoMdLogOut className="mt-[0.3rem]" /></b>Logout
+                                </a>
+                            </p>
+                        </Link>
+                    </div>
+                </p>
+            </aside>
+        <main className="flex-1 bg-slate-300 ml-[20rem] p-10 w-1/2">
           <Link to="/AddUser">
             <button className="border rounded-lg p-2 bg-green-600 hover:opacity-75 ml-[63rem] mb-4 ">Add User</button>
           </Link>
           <ToastContainer />
           {isLoading ? (
-            <Circles height={90} width={80} color="#c29d59" ariaLabel="circles-loading" wrapperStyle={{}} wrapperClass="flex items-center justify-center" visible={true} />
+             (<Puff
+              visible={true}
+              height="80"
+              width="80"
+              color="#4fa94d"
+              ariaLabel="puff-loading"
+              wrapperStyle={{}}
+              wrapperClass="flex justify-center "
+              />)
           ) : (
             <div className="bg-grey-300 flex flex-col items-center">
               <div className="md:px-[0rem] w-[80vw] mb-4 overflow-x-auto">

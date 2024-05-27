@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const UpdateUser = () => {
-  const token = localStorage.getItem("token");
+  
   const params = useParams();
   const userId = params.id;
 
@@ -40,7 +40,7 @@ const UpdateUser = () => {
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, );
 
   //form handling
 
@@ -108,7 +108,7 @@ const UpdateUser = () => {
                   id="name1"
                   className=" border-2 hover:border-2 border-grey-500 hover:border-secondary rounded-lg px-24 py-4 text-black "
                   placeholder="Enter the title "
-                  secondary
+                
                 />
               </div>
 

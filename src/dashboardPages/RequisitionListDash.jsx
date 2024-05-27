@@ -1,33 +1,58 @@
-import { HiOutlineDocumentReport } from 'react-icons/hi';
-import { LuUsers } from 'react-icons/lu';
-import { MdManageHistory } from "react-icons/md";
-import { Link } from 'react-router-dom';
-import {useEffect, useState} from 'react';
-import Logo from '../assets/img/my project logo.jpg';
-import axios from 'axios';
-import { IoMdLogOut } from "react-icons/io";
-import { GrCompliance } from "react-icons/gr";
-import { FcProcess } from "react-icons/fc";
 
-const TenderDash = () => {
-    const [tenders, setTenders] = useState([]);
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { LuUsers } from "react-icons/lu"
+import { MdManageHistory } from 'react-icons/md';
+import { HiOutlineDocumentReport } from 'react-icons/hi';
+
+import { IoMdLogOut } from 'react-icons/io';
+import { GrCompliance } from 'react-icons/gr';
+import { FcProcess } from 'react-icons/fc';
+
+
+import Logo from '../assets/img/my project logo.jpg'
+
+const RequisitionListDash = () => {
+
+    const [requisitions, setRequisitions] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchTenders = async () => {
+        const fetchRequisitions = async () => {
             try {
-                const response = await axios.get('https://procurement-backend-red.onrender.com/tenders');
-                setTenders(response.data);
+                const response = await axios.get('https://procurement-backend-red.onrender.com/allRequest');
+                setRequisitions(response.data);
             } catch (error) {
-                console.error("There was an error fetching the tenders!", error);
+                setErrorMessage('Failed to fetch requisitions. Please try again.');
+                console.error('Error fetching requisitions:', error);
             }
         };
 
-        fetchTenders();
+        fetchRequisitions();
     }, []);
 
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`https://procurement-backend-red.onrender.com/request/${id}`);
+            setRequisitions(requisitions.filter(req => req._id !== id));
+        } catch (error) {
+            setErrorMessage('Failed to delete requisition. Please try again.');
+            console.error('Error deleting requisition:', error);
+        }
+    };
+
+    const handleUpdate = (id) => {
+        navigate(`/updateRequisition/${id}`);
+    };
+
     return (
-        <>
-            <div className='flex'>
+
+
+        <div className='flex'>
+
             <aside className="bg-green-600 w-1/5 h-[44rem] absolute">
                 <div className="flex flex-col ">
                     <img src={Logo} alt="" className="w-[10rem] bg-transparent ml-8 rounded-full mt-[1rem]" />
@@ -93,32 +118,45 @@ const TenderDash = () => {
                 </p>
             </aside>
 
-                <div className="flex-1 border-4 ml-[20rem] w-[49rem]">
-                    <div className="flex flex-col mt-[1rem] gap-4 ml-[10rem]">
-                        <Link to="/addTenders">
-                            <button className='bg-green-600 hover:opacity-75 font-bold rounded-xl w-[7rem] p-3 ml-[43rem] text-white'>Add New</button>
-                        </Link>
-                        {tenders.map((tender) => (
-                            <div className="flex flex-row gap-[3rem]" key={tender.id}>
-                                <div className='border-2 rounded-lg w-[50rem] h-[12rem]'>
-                                    <img src={tender.image} alt="Tender" className='px-4 w-[11rem]' />
-                                    <div className='ml-[14rem] -my-[4rem]'>
-                                        <p className='font-bold text-green-600 text-xl hover:text-green-700'>{tender.title}</p>
-                                        <p className='font-bold'>{tender.location}</p>
-                                        <p className='font-bold'>Published on {new Date(tender.publishDate).toLocaleDateString()} | Deadline {new Date(tender.deadline).toLocaleDateString()}</p>
-                                        <p className='font-bold'>{tender.Qualification}</p>
-                                        <Link to="/applicationFrom">
-                                            <button className='border-2 rounded-lg mt-2 bg-green-600 hover:opacity-75 p-1'>Apply Now</button>
-                                        </Link>
-                                    </div>
+
+            <div className="flex-1 border-4 ml-[20rem] w-[49rem]">
+                <h1 className="text-2xl font-bold mb-6 text-green-600">Requisition List</h1>
+                {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
+                <ul>
+                    {requisitions.map(req => (
+                        <li key={req._id} className="mb-4 p-4 border rounded-md shadow-md">
+                            <div className="flex justify-between items-center">
+                                <div>
+                                    <h2 className="text-xl font-semibold">{req.title}</h2>
+                                    <p className="text-gray-700">{req.description}</p>
+                                </div>
+                                <div className="flex gap-2">
+                                    <Link to="/updateRequisition">
+                                        <button
+                                            onClick={() => handleUpdate(req._id)}
+                                            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
+                                        >
+                                            Update
+                                        </button>
+                                    </Link>
+                                    <button
+                                        onClick={() => handleDelete(req._id)}
+                                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
+                                    >
+                                        Delete
+                                    </button>
                                 </div>
                             </div>
-                        ))}
-                    </div>
-                </div>
+                        </li>
+                    ))}
+                </ul>
             </div>
-        </>
+        </div>
     );
 };
 
-export default TenderDash;
+
+
+  
+
+export default RequisitionListDash

@@ -1,12 +1,12 @@
 
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const EditUser = () => {
-  const token = localStorage.getItem("token");
+  
   const params = useParams();
   const userId = params.id;
 
@@ -39,7 +39,7 @@ const EditUser = () => {
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, );
 
   //form handling
 
@@ -105,7 +105,7 @@ const EditUser = () => {
                   id="name1"
                   className=" border-2 hover:border-2 border-grey-500 hover:border-secondary rounded-lg px-24 py-4 text-black "
                   placeholder="Enter the title "
-                  secondary
+                  
                 />
               </div>
 

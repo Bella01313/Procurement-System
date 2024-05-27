@@ -1,237 +1,61 @@
-
+import pc3 from '../assets/img/testimonials.jpg'
+import Accordion from './Accordion'
 
 const Testimonials = () => {
   return (
-    
-    <section className="bg-white">
-  <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-    <h2 className="text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-      Read trusted reviews from our customers
-    </h2>
-
-    <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
-      <blockquote className="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
-        <div className="flex items-center gap-4">
-          <img
-            alt=""
-            src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-            className="size-14 rounded-full object-cover"
+    <div className='font-jost  p-4'>
+      <div className='flex flex-col lg:flex-row  gap-6  items-center lg:items-start'>
+        <div className='lg:ml-12 lg:py-10'>
+          <img 
+            src={pc3} 
+            alt="Testimonials" 
+            className='transform transition-transform duration-300 hover:translate-x-7 rotate-20 animate-pulse w-full   mt-[4rem] lg:w-96 mb-8 lg:mb-0' 
           />
-
-          <div>
-            <div className="flex justify-center gap-0.5 text-green-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-            </div>
-
-            <p className="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p>
-          </div>
         </div>
-
-        <p className="mt-4 text-gray-700">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, a
-          consequuntur recusandae ab saepe illo est quia obcaecati neque quibusdam eius accusamus
-          error officiis atque voluptates magnam!
-        </p>
-      </blockquote>
-
-      <blockquote className="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
-        <div className="flex items-center gap-4">
-          <img
-            alt=""
-            src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-            className="size-14 rounded-full object-cover"
+        <div className='bg-blue-100 border-4 border-green-600 p-4 lg:p-8 rounded-lg w-full lg:w-[50rem]'>
+          <h1 className='text-green-600 font-bold mb-4 text-xl lg:text-2xl'>
+            Try to catch below tips will be importantly to you <span className='animate-ping text-2xl lg:text-3xl'>👍🏼</span>
+          </h1>
+          <Accordion 
+            title="✔ What is procurement, and what are its benefits and drawbacks?" 
+            answer="Procurement is the process of acquiring goods, services, or works from external sources. Benefits include cost savings through competitive bidding, improved quality of goods and services, and better supplier relationships. Drawbacks can include the complexity of managing supplier contracts, potential delays, and compliance challenges."
           />
-
-          <div>
-            <div className="flex justify-center gap-0.5 text-green-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-            </div>
-
-            <p className="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p>
-          </div>
-        </div>
-
-        <p className="mt-4 text-gray-700">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, a
-          consequuntur recusandae ab saepe illo est quia obcaecati neque quibusdam eius accusamus
-          error officiis atque voluptates magnam!
-        </p>
-      </blockquote>
-
-      <blockquote className="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
-        <div className="flex items-center gap-4">
-          <img
-            alt=""
-            src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-            className="size-14 rounded-full object-cover"
+          <Accordion 
+            title="✔ How does e-procurement differ from traditional procurement?" 
+            answer="E-procurement leverages digital technologies to automate and streamline the procurement process, reducing paperwork, speeding up transactions, and improving transparency. Traditional procurement often involves manual processes, which can be slower and more prone to errors."
           />
-
-          <div>
-            <div className="flex justify-center gap-0.5 text-green-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                />
-              </svg>
-            </div>
-
-            <p className="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p>
-          </div>
+          <Accordion 
+            title="✔ What impact does procurement have on supply chain management?" 
+            answer="Effective procurement is crucial for a resilient supply chain, ensuring that materials and services are sourced efficiently and cost-effectively, minimizing disruptions, and maintaining the flow of goods and services."
+          />
+          <Accordion 
+            title="✔ What role does procurement play in cost management?" 
+            answer="Procurement helps manage costs by negotiating favorable terms with suppliers, leveraging bulk purchasing, and conducting spend analysis to identify savings opportunities and reduce waste."
+          />
+          <Accordion 
+            title="✔ How does procurement contribute to sustainability initiatives?" 
+            answer="Procurement can support sustainability by prioritizing suppliers with environmentally friendly practices, sourcing sustainable materials, and enforcing standards that reduce the environmental impact of the supply chain."
+          />
+          <Accordion 
+            title="✔ What is the cost structure of implementing and maintaining the procurement system?" 
+            answer="Costs can include initial setup fees, subscription or licensing fees, training, and ongoing maintenance or support fees. It’s important to clarify any additional costs for customization, integration, and future upgrades."
+          />
+          <Accordion 
+            title="✔ How does the system handle supplier management and relationships?" 
+            answer="The system should offer tools for onboarding new suppliers, maintaining a supplier database, performance monitoring, and communication channels. Features like automated RFQs (Request for Quotes), supplier scorecards, and dispute resolution mechanisms are beneficial."
+          />
+          <Accordion 
+            title="✔ Is the procurement system user-friendly and customizable?" 
+            answer="User-friendly systems typically have intuitive interfaces, easy navigation, and comprehensive user guides. Customizability allows organizations to tailor workflows, dashboards, and reports to meet specific needs, enhancing user adoption and satisfaction."
+          />
+          <Accordion 
+            title="✔ What are the security measures in place to protect sensitive procurement data?" 
+            answer="Security measures can include data encryption, user access controls, audit logs, regular security updates, and compliance with standards like GDPR or ISO 27001. Multi-factor authentication (MFA) and secure data storage practices are also common."
+          />
         </div>
-
-        <p className="mt-4 text-gray-700">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, a
-          consequuntur recusandae ab saepe illo est quia obcaecati neque quibusdam eius accusamus
-          error officiis atque voluptates magnam!
-        </p>
-      </blockquote>
+      </div>
     </div>
-  </div>
-</section>
   )
 }
 
-export default Testimonials
+export default Testimonials;
