@@ -46,7 +46,7 @@ const HodRequisitionList = () => {
 
 <div className='flex'>
 
-<aside className="bg-green-600 w-1/5 h-[45rem] absolute">
+<aside className="bg-green-600 w-1/5 h-[45rem] fixed">
                 <div className="flex flex-col ">
                     <img src={Logo} alt="" className="w-[10rem]  bg-transparent ml-8 rounded-full mt-[1rem]" />
 

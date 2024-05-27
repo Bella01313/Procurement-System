@@ -149,8 +149,8 @@ const Dashboard = () => {
 
     return (
         <div className="font-jost">
-            <div className="flex ml-3 px-2 ">
-            <aside className="bg-green-600 w-1/5 h-[44rem] absolute">
+            <div className="flex ">
+            <aside className="bg-green-600 w-1/5 h-[40rem] fixed">
                 <div className="flex flex-col ">
                     <img src={Logo} alt="" className="w-[10rem] bg-transparent ml-8 rounded-full mt-[1rem]" />
 

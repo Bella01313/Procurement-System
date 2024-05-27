@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { HiOutlineDocumentReport } from 'react-icons/hi';
 import { LuUsers } from 'react-icons/lu';
 import { IoMdLogOut } from "react-icons/io";
@@ -22,7 +22,7 @@ const ApprovedTasks = () => {
   const handleAddTender = (index) => {
     const task = approvedTasks[index];
     task.status = 'checked';
-    
+
     // Save updated tasks back to localStorage
     const updatedTasks = [...approvedTasks];
     updatedTasks[index] = task;
@@ -36,7 +36,7 @@ const ApprovedTasks = () => {
   return (
     <div className='flex'>
       <ToastContainer />
-      <aside className="bg-green-600 w-1/5 h-[44rem] absolute">
+      <aside className="bg-green-600 w-1/5 h-[44rem] fixed">
         <div className="flex flex-col">
           <img src={Logo} alt="" className="w-[10rem] bg-transparent ml-8 rounded-full mt-[1rem]" />
           
@@ -100,17 +100,17 @@ const ApprovedTasks = () => {
           </div>
         </p>
       </aside>
-      <main className="flex-1 border-4 ml-[20rem] w-[49rem]">
-        <div className="border-4 rounded-lg border-green-600 flex items-center w-[42rem] my-[10rem] ml-[20rem] ">
-          <div className="flex flex-col">
-            <h2 className="text-2xl font-bold text-green-600 ml-[13rem] mb-3 mt-4">Approved Tasks</h2>
-            <table className="w-[40rem] my-2 py-2 ml-3 bg-white border-4">
+      <main className="flex-1 flex items-center justify-center ml-[20rem]">
+        <div className="border-4 rounded-lg border-green-600 flex items-center justify-center w-[49rem] h-[30rem]">
+          <div className="w-full p-4 bg-gray-100 rounded-lg flex flex-col items-center">
+            <h2 className="text-2xl font-bold text-green-600 mb-3 mt-4">Approved Tasks</h2>
+            <table className="w-full bg-white border border-gray-300">
               <thead>
                 <tr>
-                  <th className="py-2 border-b border-r text-2xl">Title</th>
-                  <th className="py-2 border-b text-2xl">Description</th>
-                  <th className="py-2 border-b text-2xl">Quantity</th>
-                  <th className="py-2 border-b text-2xl">Actions</th>
+                  <th className="py-2 border-b border-r text-lg">Title</th>
+                  <th className="py-2 border-b text-lg">Description</th>
+                  <th className="py-2 border-b text-lg">Quantity</th>
+                  <th className="py-2 border-b text-lg">Actions</th>
                 </tr>
               </thead>
               <tbody>

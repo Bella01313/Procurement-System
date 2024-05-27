@@ -147,8 +147,8 @@ const Dashboard = () => {
 
     return (
         <div className="font-jost">
-            <div className="flex ml-3 px-2 ">
-                <aside className="bg-green-600 w-1/5 h-[40rem] absolute">
+            <div className="flex  ">
+                <aside className="bg-green-600 w-1/5 h-[40rem] fixed">
                     <div className="flex flex-col ">
                         <img src={Logo} alt="" className="w-[10rem]  bg-transparent ml-8 rounded-full mt-[1rem]" />
                         <nav>
@@ -194,22 +194,24 @@ const Dashboard = () => {
                         </Link>
                 </aside>
 
-                <main className="flex-1 border-4 ml-[20rem] w-[49rem]">
+                <main className="flex-1 border-4 ml-[17rem] w-[49rem]">
                     <h2 className="text-2xl text-green-600 font-bold mb-4 py-3">Admin Dashboard</h2>
                     <div className="flex gap-2 mt-[2rem]">
                         <span className="bg-green-400 border border-gray-300 gap-12 w-[17rem] rounded-md px-4 focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <Link to= "/UserDash">
                             <div className="">
                                 <small><b className="text-xl text-blue-700">Users</b></small>
-                            </div>
+                            </div></Link>
                             <p className="flex mt-[3rem] gap-2">
                                 <TbUrgent className="text-2xl" /> Total Users <b>{userCount}</b>
                             </p>
                         </span>
 
                         <span className="bg-green-500 border border-gray-300 gap-12 w-[17rem] rounded-md px-4 focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <Link to= "/hodRequisitionList">
                             <div className="flex">
                                 <small><b className="text-xl text-blue-700">All requisition</b></small>
-                            </div>
+                            </div></Link>
                             <p className="flex mt-[3rem] gap-6">
                                 <TbUrgent className="text-2xl" /> Total requisition <b>{approvedTaskCount}</b>
                             </p>
@@ -220,14 +222,15 @@ const Dashboard = () => {
                                 <small><b className="text-xl text-blue-700">Approved tasks</b></small>
                             </div>
                             <p className="flex mt-[3rem] gap-6">
-                                <TbUrgent className="text-2xl" /> Total approved tasks <b>50 people</b>
+                                <TbUrgent className="text-2xl" /> Total approved tasks <b>50</b>
                             </p>
                         </span>
 
                         <span className="bg-blue-400 border border-gray-300 gap-12 w-[17rem] rounded-md px-4 focus:outline-none focus:ring-2 focus:ring-green-500">
+                           <Link to="/hodApplicantList">
                             <div className="flex">
                                 <small><b className="text-xl text-blue-700">Applicants</b></small>
-                            </div>
+                            </div></Link>
                             <p className="flex mt-[3rem] gap-2">
                                 <TbUrgent className="text-2xl" /> Total Applicants <b>{applicantCount}</b>
                             </p>

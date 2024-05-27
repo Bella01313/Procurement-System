@@ -11,6 +11,7 @@ const HodApplication = () => {
     const [loading, setLoading] = useState(true);
     const [applicantCount, setApplicantCount] = useState(0);
     const [selectedApplicants, setSelectedApplicants] = useState({});
+    const [rejectedApplicants, setRejectedApplicants] = useState({});
     
 
     useEffect(() => {
@@ -40,6 +41,7 @@ const HodApplication = () => {
             [id]: !prevSelected[id],
         }));
     };
+    
 
     const handleReject = async (id) => {
         try {
@@ -58,15 +60,15 @@ const HodApplication = () => {
 
     return (
         <>
-            <aside className="bg-green-600 w-full lg:w-1/5 h-full lg:h-[45rem] absolute">
-                <div className="flex flex-col items-center lg:items-start p-4">
+            <aside className="bg-green-600 w-full lg:w-1/5 h-full lg:h-[45rem] fixed">
+                <div className="flex flex-col items-center lg:items-start p-4 ">
                     <img src={Logo} alt="" className="w-[10rem] bg-transparent rounded-full mt-4" />
 
                     <nav className="mt-8">
                         <ul className="text-xl text-white space-y-4">
                             <Link to="/hodDashboard">
                                 <li className="hover:bg-white rounded-lg p-3">
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-2 hover:text-green-600 ">
                                         <HiOutlineDocumentReport className="mt-[0.3rem]" />
                                         <span>Dashboard</span>
                                     </div>
@@ -75,7 +77,7 @@ const HodApplication = () => {
 
                             <Link to="/hodPendingTasks">
                                 <li className="hover:bg-white rounded-lg p-3">
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-2 hover:text-green-600 ">
                                         <LuUsers className="mt-[0.3rem]" />
                                         <span>Pending tasks</span>
                                     </div>
@@ -84,7 +86,7 @@ const HodApplication = () => {
 
                             <Link to="/hodTenders">
                                 <li className="hover:bg-white rounded-lg p-3">
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-2 hover:text-green-600 ">
                                         <LuUsers className="mt-[0.3rem]" />
                                         <span>Tenders</span>
                                     </div>
@@ -93,7 +95,7 @@ const HodApplication = () => {
 
                             <Link to="/hodApplicantList">
                                 <li className="hover:bg-white rounded-lg p-3">
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-2 hover:text-green-600 ">
                                         <LuUsers className="mt-[0.3rem]" />
                                         <span>Applicants List</span>
                                     </div>
@@ -102,7 +104,7 @@ const HodApplication = () => {
 
                             <Link to="/hodRequisitionList">
                                 <li className="hover:bg-white rounded-lg p-3">
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-2 hover:text-green-600 ">
                                         <LuUsers className="mt-[0.3rem]" />
                                         <span>Requisition List</span>
                                     </div>
@@ -145,7 +147,7 @@ const HodApplication = () => {
                                             {selectedApplicants[applicant._id] ? 'Selected' : 'Select'}
                                         </button>
                                         <button
-                                            className="px-4 py-2 bg-red-500 text-white rounded"
+                                            className={`px-4 py-2 bg-red-500 text-white rounded`}
                                             onClick={() => handleReject(applicant._id)}
                                         >
                                             Reject
