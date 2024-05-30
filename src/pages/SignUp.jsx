@@ -36,6 +36,7 @@ const SignUp = () => {
       );
 
       toast.success(response.data.message);
+      console.log("999999999999999", response.data);
       localStorage.setItem("user", JSON.stringify(response.data.user));
       localStorage.setItem("token", response.data.access_token);
       setTimeout(() => {

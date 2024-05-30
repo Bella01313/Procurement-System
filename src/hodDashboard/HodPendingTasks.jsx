@@ -64,7 +64,7 @@ const HodPendingTasks = () => {
     <div className='flex'>
       <ToastContainer />
 
-      <aside className="bg-green-600 w-1/5 h-[40rem] absolute">
+      <aside className="bg-green-600 w-1/5 h-[40rem] fixed">
         <div className="flex flex-col">
           <img src={Logo} alt="" className="w-[10rem] bg-transparent ml-8 rounded-full mt-[1rem]" />
 
@@ -103,8 +103,8 @@ const HodPendingTasks = () => {
           </div>
         </p>
       </aside>
-      <main className="flex-1 border-4 ml-[20rem] w-[49rem]">
-        <div className="border-4 rounded-lg border-green-600 flex items-center w-[42rem] my-[10rem] ml-[20rem] h-[23rem]">
+      <main className="flex-1 border-4 ml-[20rem] w-[49rem] flex items-center justify-center">
+        <div className="border-4 rounded-lg border-green-600 flex items-center w-[42rem] my-[10rem]   h-[23rem]">
           <div className="flex flex-col">
             <form onSubmit={handleFormSubmit}>
               <table className="w-[40rem] my-2 py-2 ml-3 bg-white border-4">
