@@ -64,13 +64,8 @@ const ApprovedTasks = () => {
                   </a>
                 </li>
               </Link>
-              <Link to="/pendingTasks">
-                <li className="mb-4 hover:bg-white rounded-lg p-2">
-                  <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
-                    <b><FcProcess className="mt-[0.3rem]" /></b> Pending tasks
-                  </a>
-                </li>
-              </Link>
+            
+            
               <Link to="/hodRequisitionList">
                 <li className="mb-4 hover:bg-white rounded-lg p-2">
                   <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
@@ -90,7 +85,7 @@ const ApprovedTasks = () => {
         </div>
         <p className="py-[8rem] w-[10rem] ml-[3rem]">
           <div className="rounded-lg bg-white text-center">
-            <Link to="/login">
+            <Link to="/">
               <p className="mb-4 hover:bg-green-600 hover:text-white border-2 rounded-lg p-2">
                 <a href="#" className="flex gap-2 ml-8">
                   <b><IoMdLogOut className="mt-[0.3rem]" /></b>Logout
@@ -101,7 +96,7 @@ const ApprovedTasks = () => {
         </p>
       </aside>
       <main className="flex-1 flex items-center justify-center ml-[20rem]">
-        <div className="border-4 rounded-lg border-green-600 flex items-center justify-center w-[49rem] h-[30rem]">
+        <div className="border-4 rounded-lg border-green-600 flex items-center justify-center w-[49rem] mt-">
           <div className="w-full p-4 bg-gray-100 rounded-lg flex flex-col items-center">
             <h2 className="text-2xl font-bold text-green-600 mb-3 mt-4">Approved Tasks</h2>
             <table className="w-full bg-white border border-gray-300">

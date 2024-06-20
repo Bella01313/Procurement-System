@@ -43,7 +43,7 @@ const AddUser = () => {
       if (response.status === 200 || response.status === 201) {
         toast.success("User added successfully");
         setTimeout(() => {
-          navigate("/dashboard/userDash");
+          navigate("/UserDash");
         }, 2000);
       } else {
         toast.error("Failed to add user");

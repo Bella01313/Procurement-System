@@ -10,6 +10,7 @@ const AddTenderForm = () => {
     const [image, setImage] = useState([]);
     const [deadline, setDeadline] = useState('');
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,6 +27,7 @@ const AddTenderForm = () => {
            const res= await axios.post('https://procurement-backend-red.onrender.com/tender',formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}`,
                 },
             });
             console.log(res);

@@ -7,7 +7,8 @@ import Logo from '../assets/img/my project logo.jpg';
 import { ThreeDots } from 'react-loader-spinner';
 //import { IoMdClose } from "react-icons/io";
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
+import {  toast } from "react-toastify";
 const ApplicationForm = () => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
@@ -17,6 +18,7 @@ const ApplicationForm = () => {
     const [cv, setCv] = useState('');
     const [whyHire, setWhyHire] = useState("");
     const [isLoading, setIsLoading] = useState(false); // Loading state
+    const navigate = useNavigate();
 
     const handleSubmit= async (e) => {
         e.preventDefault();
@@ -35,17 +37,20 @@ const ApplicationForm = () => {
         };
     
         console.log("Form data:", form); // Log the form data object
-    
+        
         try {
             const response = await axios.post(`https://procurement-backend-red.onrender.com/form`, form,{
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            
+            const { message } = response.data;
             console.log(response);
+            toast.success(message);
+            navigate('/tenders');
         } catch (error) {
-            console.log(error);
+            console.error("Error:", error);
+      toast.error(error.message);
         } finally {
             setIsLoading(false);
         }

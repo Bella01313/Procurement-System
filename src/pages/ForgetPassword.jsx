@@ -1,4 +1,4 @@
-import Logo from '../assets/img/my project logo.jpg'
+import Logo from '../assets/img/my project logo1.jpg'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios';
@@ -43,20 +43,26 @@ const ForgetPassword = () => {
 
 
   return (
-    <div className="tab">
-      <div className='login'>
-        <img src={Logo} alt="logo" className='logo' />
-        <h1 className='heading'>Forgot Password?</h1>
-        <h1>Input your email address below to reset <br />your password</h1>
-        <label htmlFor="email">Email:</label>
-        <input className='input' type="text" placeholder='input your email address' value={email} onChange={(e) => setEmail(e.target.value)} />
-        {emailErr ? (<p className='text-red-500 font-sans '>{emailErr}</p>) : null}
-        <Link to="/resetPassword"><button type="submit" className='text-center bg-green-400 text-white font-bold font-mono p-2 rounded-lg hover:opacity-75'
-          onClick={(e) => { 
-            handleSignUp(e);
-            // console.log('gfhjbkl;');
-            }}>Continue</button></Link>
+    <div className="font-jost">
+      <div className='container flex flex-col -mt-[6rem] shadow  bg-gradient-to-b from-white via-blue-90  to-blue-100 h-[58rem]'>
+        <div className='shadow-md   bg-gradient-to-b from-white via-blue-90  to-blue-100'>
+          <form action="" className='w-full ml-[2rem] mr-2 flex flex-col'>
+          <img src={Logo} alt="logo" className='w-[20rem]' />
+          <h1 className='ml-[7rem] mb-2'>Forgot Password?</h1>
+          <h1 className='mb-2'>Input email we send you the link for reset password</h1>
+          <label htmlFor="email">Email:</label>
+          <input className='border-2 rounded-lg w-[19rem] p-2' type="text" placeholder='input your email address' value={email} onChange={(e) => setEmail(e.target.value)} />
 
+
+          {emailErr ? (<p className='text-red-500 font-sans '>{emailErr}</p>) : null}
+          <Link to="/resetPassword"><button type="submit" className='text-center bg-green-500 mt-4 mb-3 text-white font-bold font-mono p-2 rounded-lg hover:opacity-75'
+            onClick={(e) => {
+              handleSignUp(e);
+              
+            }}>send email</button></Link>
+            
+            </form>
+        </div>
       </div>
     </div>
   )

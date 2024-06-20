@@ -12,6 +12,7 @@ const HodRequisitionList = () => {
   const [requisitions, setRequisitions] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     const fetchRequisitions = async () => {
@@ -29,7 +30,14 @@ const HodRequisitionList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://procurement-backend-red.onrender.com/request/${id}`);
+      await axios.delete('https://procurement-backend-red.onrender.com/delete-request',{
+          headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`,
+          }
+      });
+          
+    
       setRequisitions(requisitions.filter(req => req._id !== id));
     } catch (error) {
       setErrorMessage('Failed to delete requisition. Please try again.');
@@ -38,6 +46,7 @@ const HodRequisitionList = () => {
   };
 
   const handleUpdate = (id) => {
+    
     navigate(`/updateRequisition/${id}`);
   };
 
@@ -101,16 +110,17 @@ const HodRequisitionList = () => {
             </aside >
 
 
-    <div className="flex-1 border-4 ml-[20rem] w-[49rem]">
+    <div className="flex-1  border-4 ml-[20rem] w-[49rem]">
       <h1 className="text-2xl font-bold mb-6 text-green-600">Requisition List</h1>
       {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
-      <ul>
+      <ul className='   rounded-md p-4  grid grid-cols-2 gap-9'>
         {requisitions.map(req => (
-          <li key={req._id} className="mb-4 p-4 border rounded-md shadow-md">
+          <li key={req._id} className="mb-4 p-4 border-2 hover:border-green-500 rounded-md shadow-md">
             <div className="flex justify-between items-center">
               <div>
                 <h2 className="text-xl font-semibold">{req.title}</h2>
                 <p className="text-gray-700">{req.description}</p>
+                <p className="text-gray-700">{req.quantity}</p>
               </div>
               <div className="flex gap-2">
                 <Link to="/updateRequisition">

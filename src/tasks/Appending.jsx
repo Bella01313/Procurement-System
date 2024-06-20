@@ -100,7 +100,7 @@ const PendingTasks = () => {
         </div>
         <div className="py-[8rem] w-[10rem] ml-[3rem]">
           <div className="rounded-lg bg-white text-center">
-            <Link to="/login">
+            <Link to="/">
               <p className="mb-4 hover:bg-green-600 hover:text-white border-2 rounded-lg p-2">
                 <a href="#" className="flex gap-2 ml-8">
                   <b><IoMdLogOut className="mt-[0.3rem]" /></b>Logout

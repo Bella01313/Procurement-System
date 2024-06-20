@@ -29,8 +29,9 @@ import HodTenders from './hodDashboard/HodTenders.jsx';
 import HodApplication from './hodDashboard/HodApplication.jsx';
 import TenderDash from './dashboardPages/TenderDash.jsx';
 import AddTender from './tenders/AddTender.jsx';
-import HodRequisitionList from './hodDashboard/hodRequisitionList.jsx';
+// import HodRequisitionList from './hodDashboard/hodRequisitionList.jsx';
 import UpdateRequisition from './hodDashboard/UpdateRequisition.jsx';
+import RequisitionListDash from './dashboardPages/RequisitionListDash.jsx';
 
 
 function App() {
@@ -54,13 +55,13 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/forgetpassword" element={<ForgetPassword />} />
-          <Route path="/userdash" element={<UserDash />} />
+          <Route path="/UserDash" element={<UserDash />} />
           <Route path="/accountdash" element={<AccountDash />} />
           <Route path="/admindash" element={<AdminDash />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/approvedTasks" element={<Approved />} />
           <Route path="/pendingTasks" element={<Appending />} />
-          <Route path="/applicationFrom" element={<ApplicationForm />} />
+          <Route path="/applicationForm" element={<ApplicationForm />} />
           <Route path="/requisition" element={<Requisition/>} />
           <Route path="/applicantlist" element={<ApplicantList />} />
           <Route path="/hodDashboard" element={<HodDashboard />} />
@@ -69,9 +70,9 @@ function App() {
           <Route path="/hodApplicantList" element={<HodApplication/>}/>
           <Route path="/addTenders" element={<AddTender/>}/>
           <Route path="/tenderDash" element={<TenderDash/>}/>
-          <Route path="/hodRequisitionList" element={<HodRequisitionList/>}/>
+          {/* <Route path="/hodRequisitionList" element={<HodRequisitionList/>}/> */}
           <Route path="/updateRequisition" element={<UpdateRequisition/>}/>
-        
+          <Route path="/requisitionListDash" element={<RequisitionListDash/>}/>
         </Routes>
       </Router>
     </>

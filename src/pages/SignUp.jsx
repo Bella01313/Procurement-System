@@ -4,7 +4,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
-import Logo from "../assets/img/my project logo.jpg";
+import Logo from "../assets/img/my project logo1.jpg";
 
 const SignUp = () => {
   const [fullName, setFullName] = useState("");
@@ -66,11 +66,11 @@ const SignUp = () => {
 
   return (
     <div className="font-jost">
-      <div className="container mx-auto">
+      <div className=" h-[57rem] container bg-gradient-to-b from-white via-blue-90 to-blue-100 mx-auto">
         <ToastContainer />
-        <div className="flex border-4 w-[30rem] px-[4rem] justify-center mt-[8rem] rounded-xl border-green-600 items-center">
+        <div className="flex  w-[30rem] px-[4rem]  bg-gradient-to-b from-white via-blue-90 to-blue-100 justify-center -mt-[6rem] shadow-md items-center">
           <form className="w-full max-w-md" onSubmit={handleSubmit}>
-            <img src={Logo} alt="" className="px-4" />
+            <img src={Logo} alt="" className="px-[5rem]" />
             <h2 className="text-xl text-green-600 mt-12 mb-4 font-bold">
               Create account here!
             </h2>
@@ -151,7 +151,7 @@ const SignUp = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-green-600 py-3 rounded-lg text-xl mb-3 font-bold hover:bg-green-700 hover:text-white"
+              className="w-full bg-green-500 py-3 rounded-lg text-xl mb-3 font-bold hover:bg-green-700 hover:text-white"
             >
               {isLoading ? (
                 <ThreeDots

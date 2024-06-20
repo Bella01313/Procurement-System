@@ -51,7 +51,7 @@ const Contact = () => {
               <p className="text-lg">Tell us about yourself and we will contact you as soon as possible.</p>
               <ContactForm />
             </div>
-            <div className="flex-1 bg-green-600 text-white p-7 h-[40rem] mb-[18rem] rounded-lg">
+            <div className="flex-1 bg-green-600 text-center py-[5rem] text-white p-7 h-[40rem]  mb-[18rem] rounded-lg">
               <h2 className="text-2xl md:text-3xl mb-4">Contact Information</h2>
               <div className="text-lg mb-6">
                 <p>523, Block A</p>
@@ -62,14 +62,9 @@ const Contact = () => {
                 <p>procurement.system.red@gmail.com</p>
                 <p>Call us: +250-781-796-283</p>
               </div>
-              <div className="text-lg ">Follow us on</div>
-              <ul className="flex gap-4">
-                <li className="border-2 rounded-full p-3 bg-white text-black hover:bg-green-700 hover:text-white"><FaFacebookF /></li>
-                <li className="border-2 rounded-full p-3 bg-white text-black hover:bg-green-700 hover:text-white"><FaLinkedinIn /></li>
-                <li className="border-2 rounded-full p-3 bg-white text-black hover:bg-green-700 hover:text-white"><SiGmail /></li>
-                <li className="border-2 rounded-full p-3 bg-white text-black hover:bg-green-700 hover:text-white"><FaInstagram /></li>
-              </ul>
+          <h1 className="font-bold">"Your feedback is important to us. Please leave a message."</h1>
             </div>
+            
           </div>
         </div>
       </div>

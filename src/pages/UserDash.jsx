@@ -22,15 +22,21 @@ const UserDash = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("https://procurement-backend-red.onrender.com/user");
+        const token = localStorage.getItem("token");
+        const response = await fetch("https://procurement-backend-red.onrender.com/user", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (!response.ok) {
-          throw new Error("Failed to fetch users");
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
         const data = await response.json();
         setUsers(data);
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching users:", error);
+        toast.error("Failed to fetch users");
         setIsLoading(false);
       }
     };
@@ -38,12 +44,39 @@ const UserDash = () => {
     fetchUsers();
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
-      setUsers(users.filter((user) => user._id !== id));
-      toast.success("Delete successful");
+      try {
+        const token = localStorage.getItem("token");
+        
+        const response = await fetch(`https://procurement-backend-red.onrender.com/user?id=${id}`, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        console.log('Response from server:', response);
+  
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+  
+        const result = await response.json();
+        console.log('Delete result:', result);
+  
+        setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
+        toast.success("Delete successful");
+      } catch (error) {
+        console.error("Error deleting user:", error);
+        toast.error("Delete failed");
+      }
     }
   };
+  
+  
+  
+  
 
   const handlePageChange = ({ selected }) => {
     setUserPageNumber(selected);
@@ -69,73 +102,68 @@ const UserDash = () => {
   return (
     <>
       <div className="flex">
-        <aside className="bg-green-600 w-1/5 h-[44rem] fixed">
-          <div className="flex flex-col">
-            <img src={Logo} alt="" className="w-[10rem] bg-transparent ml-8 rounded-full mt-[1rem]" />
-            {/* Sidebar Navigation */}
-            <nav>
-              <ul className="mt-[2rem] text-xl">
-                <Link to="/dashboard">
-                  <li className="mb-4 hover:bg-white rounded-lg p-2">
-                    <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
-                      <b><HiOutlineDocumentReport className="mt-[0.3rem]" /></b>Dashboard
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/UserDash">
-                  <li className="mb-4 hover:bg-white rounded-lg p-2">
-                    <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
-                      <b><LuUsers className="mt-[0.3rem]" /></b> Users
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/approvedTasks">
-                  <li className="mb-4 hover:bg-white rounded-lg p-2">
-                    <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
-                      <b><GrCompliance className="mt-[0.3rem]" /></b> Approved tasks
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/pendingTasks">
-                  <li className="mb-4 hover:bg-white rounded-lg p-2">
-                    <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
-                      <b><FcProcess className="mt-[0.3rem]" /></b> Pending tasks
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/hodRequisitionList">
-                  <li className="mb-4 hover:bg-white rounded-lg p-2">
-                    <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
-                      <b><MdManageHistory className="mt-[0.3rem]" /></b>Requisition List
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/tenderDash">
-                  <li className="mb-4 hover:bg-white rounded-lg p-2">
-                    <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
-                      <b><MdManageHistory className="mt-[0.3rem]" /></b>Tenders
-                    </a>
-                  </li>
-                </Link>
-              </ul>
-            </nav>
-          </div>
-          <p className="py-[8rem] w-[10rem] ml-[3rem]">
-            <div className="rounded-lg bg-white text-center">
-              <Link to="/login">
-                <p className="mb-4 hover:bg-green-600 hover:text-white border-2 rounded-lg p-2">
-                  <a href="#" className="flex gap-2 ml-8">
-                    <b><IoMdLogOut className="mt-[0.3rem]" /></b>Logout
-                  </a>
-                </p>
-              </Link>
-            </div>
-          </p>
-        </aside>
+      <aside className="bg-green-600 w-1/5 h-[43rem] fixed">
+                    <div className="flex flex-col ">
+                        <img src={Logo} alt="" className="w-[10rem] bg-transparent ml-8 rounded-full mt-[1rem]" />
+
+                        {/* Sidebar Navigation */}
+                        <nav>
+                            <ul className="mt-[2rem] text-xl">
+                                <Link to="/dashboard">
+                                    <li className="mb-4 hover:bg-white rounded-lg p-2">
+                                        <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
+                                            <b><HiOutlineDocumentReport className="mt-[0.3rem]" /></b>Dashboard
+                                        </a>
+                                    </li>
+                                </Link>
+                                <Link to="/UserDash">
+                                    <li className="mb-4 hover:bg-white rounded-lg p-2">
+                                        <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
+                                            <b><LuUsers className="mt-[0.3rem]" /></b> Users
+                                        </a>
+                                    </li>
+                                </Link>
+                                <Link to="/approvedTasks">
+                                    <li className="mb-4 hover:bg-white rounded-lg p-2">
+                                        <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
+                                            <b><GrCompliance className="mt-[0.3rem]" /></b> Approved tasks
+                                        </a>
+                                    </li>
+                                </Link>
+                        
+                                <Link to="/requisitionListDash">
+                                    <li className="mb-4 hover:bg-white rounded-lg p-2">
+                                        <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
+                                            <b><MdManageHistory className="mt-[0.3rem]" /></b>Requisition List
+                                        </a>
+                                    </li>
+                                </Link>
+                                <Link to="/tenderDash">
+                                    <li className="mb-4 hover:bg-white rounded-lg p-2">
+                                        <a href="#" className="text-white hover:text-green-600 flex gap-2 ml-8">
+                                            <b><MdManageHistory className="mt-[0.3rem]" /></b>Tenders
+                                        </a>
+                                    </li>
+                                </Link>
+                            </ul>
+                        </nav>
+                    </div>
+                    <p className="py-[8rem] w-[10rem] ml-[3rem]">
+                        <div className="rounded-lg bg-white text-center">
+                            <Link to="/login">
+                                <p className="mb-4 hover:bg-green-600 hover:text-white border-2 rounded-lg p-2">
+                                    <a href="#" className="flex gap-2 ml-8">
+                                        <b><IoMdLogOut className="mt-[0.3rem]" /></b>Logout
+                                    </a>
+                                </p>
+                            </Link>
+                        </div>
+                    </p>
+                </aside>
         <main className="flex-1 bg-slate-300 ml-[20rem] p-10">
           <div className="relative mb-4">
             <Link to="/AddUser">
-              <button className="fixed top-0 right-0 border rounded-lg p-2 bg-green-600 hover:opacity-75">Add User</button>
+              <button className=" ml-[35rem] border rounded-lg p-2 bg-green-600 hover:opacity-75">Add User</button>
             </Link>
           </div>
           <ToastContainer />

@@ -3,9 +3,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { ThreeDots } from "react-loader-spinner";
-import Logo from '../assets/img/my project logo.jpg'
-import { IoEyeSharp } from "react-icons/io5";
-<IoEyeSharp />
+import Logo from '../assets/img/my project logo1.jpg';  // Adjust the import as per your file structure
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -22,15 +20,31 @@ const Login = () => {
         email,
         password,
       });
-      console.log(response)
-      toast.success(response.data.message);
 
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-      localStorage.setItem("token", response.data.access_token);
+      console.log(response.data);
 
-      setTimeout(() => {
-        navigate("/");
-      }, 3000);
+      const { user, message } = response.data;
+
+      if (user.role === "admin") {
+        toast.success(message);
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", user.tokens);
+
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 3000);
+      } else if (user.role === "HOD") {
+        toast.success(message);
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", user.tokens);
+
+        setTimeout(() => {
+          navigate("/hodDashboard");
+        }, 3000);
+        
+      } else {
+        toast.error("You do not have the necessary privileges.");
+      }
     } catch (error) {
       console.error("Error:", error);
       toast.error(error.message);
@@ -44,18 +58,18 @@ const Login = () => {
   return (
     <>
       <div className="font-jost">
-        <div className="container mx-auto flex justify-center items-center h-screen">
+        <div className="container mx-auto bg-gradient-to-b from-white via-blue-90 to-blue-100 flex justify-center items-center h-screen">
           <ToastContainer />
-          <div className="border-4 border-green-600 p-8 rounded-lg w-full max-w-md">
-            <img src={Logo} alt="" className="w-full mb-8" />
-            <form className="space-y-4">
+          <div className=" bg-gradient-to-b shadow-md from-white via-blue-90 to-blue-100 p-8 rounded-lg w-full max-w-md">
+            <img src={Logo} alt="Logo" className="px-[3rem] mb-8" />
+            <form className="space-y-4" onSubmit={handleLogin}>
               <h2 className="text-2xl text-green-600 font-bold">LOGIN HERE!</h2>
               <p>
                 Don't have an account yet?{" "}
                 <Link to="/signup" className="text-secondary text-red-400 underline">
                   Sign up
                 </Link>
-              </p>
+              </p>````
               <div>
                 <label htmlFor="email" className="block font-semibold mb-2">
                   Enter your email
@@ -91,8 +105,7 @@ const Login = () => {
               </div>
               <button
                 type="submit"
-                onClick={handleLogin}
-                className="w-full bg-green-600 py-3 rounded-lg text-xl font-bold hover:opacity-75 hover:text-white flex items-center justify-center"
+                className="w-full bg-green-500 py-3 rounded-lg text-xl font-bold hover:opacity-75 hover:text-white flex items-center justify-center"
               >
                 {isLoading ? (
                   <ThreeDots height={30} width={30} radius={4} color="white" ariaLabel="three-dots-loading" />

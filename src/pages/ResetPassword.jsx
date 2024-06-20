@@ -1,4 +1,4 @@
-import Logo from '../assets/img/my project logo.jpg';
+import Logo from '../assets/img/my project logo1.jpg';
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -48,35 +48,37 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="tab">
-      <div className='login'>
-        <img src={Logo} alt="logo" className='logo' />
-        <h1 className='heading'>Reset Password</h1>
-        <h1 className='text-gray-400 px-[3.5rem]'>Set a new password below</h1>
-        <form onSubmit={handleSignUp}>
-          <label htmlFor="email">Email :</label>
+    <div className="font-jost">
+      <div className='container flex flex-col -mt-[6rem] shadow  bg-gradient-to-b from-white via-blue-90  to-blue-100 h-[58rem]'>
+        <div className='shadow-md  bg-gradient-to-b from-white via-blue-90  to-blue-100'>
+        <form onSubmit={handleSignUp} className='w-full ml-5 max-w-md flex flex-col'>
+        <img src={Logo} alt="logo" className='px-[4rem] ' />
+        <h1 className='text-green-600 font-bold ml-[9rem] text-2xl mb-3'>Reset Password</h1>
+        <h1 className='text-gray-600 '>Set a new password below</h1>
+          <label htmlFor="email" className='font-bold'>Email :</label>
           <input
-            className='input'
-            type="text"
+            className='border-2 rounded-lg p-2'
+            type=""
             placeholder='Enter your email address'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           {emailErr && (<p className='text-red-500 font-sans'>{emailErr}</p>)}
-          <label htmlFor="password">New Password</label>
+          <label htmlFor="password" className='font-bold'>New Password :</label>
           <input
-            className='input'
+            className='border-2 rounded-lg p-2'
             type="password"
             placeholder='Enter your password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           {passwordErr && (<p className='text-red-50 font-sans'>{passwordErr}</p>)}
-          <button type="submit" className='text-center bg-green-400 text-white font-bold font-mono p-2 rounded-lg hover:opacity-75'>
+          <button type="submit" className='text-center bg-green-500 text-white font-bold mt-4 mb-4 font-mono p-2 rounded-lg hover:opacity-75'>
             Reset Password
           </button>
         </form>
-        <a href="/login" className='text-center'>Back to Login</a>
+        
+        </div>
       </div>
     </div>
   );

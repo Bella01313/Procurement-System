@@ -5,16 +5,10 @@ const Testimonials = () => {
   return (
     <div className='font-jost  p-4'>
       <div className='flex flex-col lg:flex-row  gap-6  items-center lg:items-start'>
-        <div className='lg:ml-12 lg:py-10'>
-          <img 
-            src={pc3} 
-            alt="Testimonials" 
-            className='transform transition-transform duration-300 hover:translate-x-7 rotate-20 animate-pulse w-full   mt-[4rem] lg:w-96 mb-8 lg:mb-0' 
-          />
-        </div>
-        <div className='bg-blue-100 border-4 border-green-600 p-4 lg:p-8 rounded-lg w-full lg:w-[50rem]'>
-          <h1 className='text-green-600 font-bold mb-4 text-xl lg:text-2xl'>
-            Try to catch below tips will be importantly to you <span className='animate-ping text-2xl lg:text-3xl'>👍🏼</span>
+      
+        <div className='bg-blue-100 border-4 border-green-600 p-4   lg:mt-[5rem] rounded-lg w-full lg:w-[55rem] lg:ml-[22rem]'>
+          <h1 className='text-green-600 font-bold mb-4 text-xl lg:text-4xl'>
+            Try to catch below tips will be importantly to you <span className='a text-2xl lg:text-3xl'>👍🏼</span>
           </h1>
           <Accordion 
             title="✔ What is procurement, and what are its benefits and drawbacks?" 

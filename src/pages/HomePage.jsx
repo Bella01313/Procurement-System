@@ -1,7 +1,7 @@
 import kice from '../assets/img/home image.jpg';
 import About from '../pages/About';
 import Service from '../pages/Service';
-import TendersPage from '../tenders/TendersPage';
+
 import Testimonials from './Testimonials';
 import Contact from './Contact'
 
@@ -38,7 +38,7 @@ const HomePage = () => {
         <div className='-mt-[8rem]'><About /></div>
         <div className='-my-[4rem]'><Service /></div>
         <div className='-my-[4rem]'><Testimonials /></div>
-        <div className=''><TendersPage/></div>
+        <div className=''></div>
         <div><Contact/></div>
       </div>
       </div>
